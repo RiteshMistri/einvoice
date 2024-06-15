@@ -885,7 +885,7 @@ class EInvoiceAPIs extends SiyaConfig{
         $url .= '?' . http_build_query($params);
 
         // $data =  $this->data_encrypt($userData['Sek'],$invoiceData);
-        $data =  $invoiceData;
+        // $data =  $invoiceData;
 
         
         
@@ -1051,8 +1051,8 @@ class EInvoiceAPIs extends SiyaConfig{
         // ];
 
         // Encode the data to JSON
-        // $data = json_encode($jsonData);
-        return $data;
+        $data = json_encode($invoiceData);
+        // return $data;
 
         // $header =   array(
         //     'user_name:'. $userData['UserName'],
