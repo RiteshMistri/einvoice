@@ -131,8 +131,6 @@ class EInvoiceAPIs extends SiyaConfig{
         }
     }
     public function GetBranchGspCredentials(){
-        print_r($this->BranchID);
-        exit();
         $sql = "Select GSP.UserName,GSP.Password,BMst.GSTN,GSP.AuthToken,Sek from TA_GspEInvoiceCredential as GSP 
         Left join TA_BranchMst as BMst On GSP.GSPID = '1' and GSP.BranchID = BMst.BranchID where GSP.BranchID =" . $this->BranchID;
         return $this->getSingleData($sql);
@@ -858,7 +856,6 @@ class EInvoiceAPIs extends SiyaConfig{
         //     'UserName' => 'AL001'
         // ];
 
-       
         $header = [
             'aspid' => '1763812424',
             'password' => 'P@ssw0rd',
