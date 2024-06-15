@@ -845,9 +845,7 @@ class EInvoiceAPIs extends SiyaConfig{
         return $InvoiceIRNJSONData;
     }
     public function GenerateIRN($input){
-        $authRes = $this->auth($input);
-        print_r($authRes);
-        exit();
+        // $authRes = $this->auth($input);
         if(empty($input['InvoiceId']) && intval($input['InvoiceId']) <= 0){
             return ['status'=>0,'Message'=>'InvoiceId Require'];
         }
