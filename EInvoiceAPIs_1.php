@@ -147,7 +147,6 @@ class EInvoiceAPIs extends SiyaConfig{
         return $this->getSingleData($sql);
     }
     public function GenerateReturnIRN($input){
-        return $this->auth($input);
         if(empty($input['PKID']) && intval($input['PKID']) <= 0){
             return ['status'=>0,'Message'=>'PKID Require'];
         }
@@ -845,6 +844,8 @@ class EInvoiceAPIs extends SiyaConfig{
         return $InvoiceIRNJSONData;
     }
     public function GenerateIRN($input){
+        return $authRes = $this->auth($input);
+
         if(empty($input['InvoiceId']) && intval($input['InvoiceId']) <= 0){
             return ['status'=>0,'Message'=>'InvoiceId Require'];
         }
