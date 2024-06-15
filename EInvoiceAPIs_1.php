@@ -883,7 +883,8 @@ class EInvoiceAPIs extends SiyaConfig{
         // Append the parameters to the URL
         $url .= '?' . http_build_query($params);
 
-        $data =  $this->data_encrypt($userData['Sek'],$invoiceData);
+        // $data =  $this->data_encrypt($userData['Sek'],$invoiceData);
+        $data =  $invoiceData;
         
         return $data;
 
