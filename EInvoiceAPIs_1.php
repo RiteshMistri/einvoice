@@ -42,8 +42,9 @@ class EInvoiceAPIs extends SiyaConfig{
         $url = "https://gstsandbox.charteredinfo.com/eivital/dec/v1.04/auth";
         if($this->Mode != 'Dev'){
             $url = "https://gstsandbox.charteredinfo.com/eivital/dec/v1.04/auth";
-            $userData = $this->GetBranchGspCredentials();
         }
+        $userData = $this->GetBranchGspCredentials();
+
         // error_reporting(E_ALL);
         // openssl_public_encrypt($userData['Password'], $encrypted, $this->publicKey);
         // $this->transfer = base64_encode($encrypted);
