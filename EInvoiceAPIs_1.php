@@ -866,12 +866,11 @@ class EInvoiceAPIs extends SiyaConfig{
             $url = 'https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice';
         }
         $userData = $this->GetBranchGspCredentials();
-        print_r($userData);
-        exit();
+       
         $params = [
             'aspid' => '1763812424',
             'password' => 'P@ssw0rd',
-            'Gstin' => $userData['GSTN'],
+            'Gstin' => '34AACCC1596Q002',
             'User_name' => $userData['UserName'],
             'eInvPwd' => $userData['Password'],
             'AuthToken' => $userData['AuthToken'],
@@ -879,7 +878,6 @@ class EInvoiceAPIs extends SiyaConfig{
             'fortally' => 1,
             // 'ParseIrnResp' => 0,
         ];
-        print_r($params);
         // Append the parameters to the URL
         $url .= '?' . http_build_query($params);
 
