@@ -865,9 +865,9 @@ class EInvoiceAPIs extends SiyaConfig{
         $url = "https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice";
         if($this->Mode != 'Dev'){
             $url = 'https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice';
-            $userData = $this->GetBranchGspCredentials();
         }
-
+        $userData = $this->GetBranchGspCredentials();
+        print_r($userData);
         $params = [
             'aspid' => '1763812424',
             'password' => 'P@ssw0rd',
