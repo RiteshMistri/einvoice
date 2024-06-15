@@ -859,6 +859,10 @@ class EInvoiceAPIs extends SiyaConfig{
         $header = [
             'aspid' => '1763812424',
             'password' => 'P@ssw0rd',
+            'Gstin' => '34AACCC1596Q002',
+            'User_name' => $userData['UserName'],
+            'eInvPwd' => $userData['Password'],
+            'AuthToken' => $userData['AuthToken'],
         ];
        
         $url = "https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice";
@@ -870,10 +874,6 @@ class EInvoiceAPIs extends SiyaConfig{
         $params = [
             'aspid' => '1763812424',
             'password' => 'P@ssw0rd',
-            'Gstin' => '34AACCC1596Q002',
-            'User_name' => $userData['UserName'],
-            'eInvPwd' => $userData['Password'],
-            'AuthToken' => $userData['AuthToken'],
             'QrCodeSize' => 250,
             'fortally' => 1,
             // 'ParseIrnResp' => 0,
