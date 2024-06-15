@@ -24,7 +24,7 @@ class EInvoiceAPIs extends SiyaConfig{
         parent::__construct($cnn);
         $this->cnn = $cnn;
         $this->errorList = $errorarr;
-        $this->Mode = 'Dev1';
+        $this->Mode = 'Dev';
         $this->msg = '';
         $this->BranchDetail = $this->getBranchDetail();
         $this->sub_key = 'AL9r5j2k7j1y8A6m1R';
