@@ -882,8 +882,167 @@ class EInvoiceAPIs extends SiyaConfig{
         $url .= '?' . http_build_query($params);
 
         // $data =  $this->data_encrypt($userData['Sek'],$invoiceData);
-        $data =  $invoiceData;
-        
+        // $data =  $invoiceData;
+        $data = {
+            "Version": "1.1",
+            "TranDtls": {
+                "TaxSch": "GST",
+                "SupTyp": "B2B",
+                "RegRev": "Y",
+                "EcmGstin": null,
+                "IgstOnIntra": "N"
+            },
+            "DocDtls": {
+                "Typ": "INV",
+                "No": "DOC/609555001",
+                "Dt": "15/06/2024"
+            },
+            "SellerDtls": {
+                "Gstin": "34AACCC1596Q002",
+                "LglNm": "NIC company pvt ltd",
+                "TrdNm": "NIC Industries",
+                "Addr1": "5th block, kuvempu layout",
+                "Addr2": "kuvempu layout",
+                "Loc": "GANDHINAGAR",
+                "Pin": 605001,
+                "Stcd": "34",
+                "Ph": "9000000000",
+                "Em": "abc@gmail.com"
+            },
+            "BuyerDtls": {
+                "Gstin": "29AWGPV7107B1Z1",
+                "LglNm": "XYZ company pvt ltd",
+                "TrdNm": "XYZ Industries",
+                "Pos": "12",
+                "Addr1": "7th block, kuvempu layout",
+                "Addr2": "kuvempu layout",
+                "Loc": "GANDHINAGAR",
+                "Pin": 562160,
+                "Stcd": "29",
+                "Ph": "91111111111",
+                "Em": "xyz@yahoo.com"
+            },
+            "DispDtls": {
+                "Nm": "ABC company pvt ltd",
+                "Addr1": "7th block, kuvempu layout",
+                "Addr2": "kuvempu layout",
+                "Loc": "Banagalore",
+                "Pin": 562160,
+                "Stcd": "29"
+            },
+            "ItemList": [
+                {
+                    "SlNo": "1",
+                    "PrdDesc": "Rice",
+                    "IsServc": "N",
+                    "HsnCd": "1001",
+                    "Barcde": "12356",
+                    "Qty": 100.345,
+                    "FreeQty": 10,
+                    "Unit": "BAG",
+                    "UnitPrice": 99.545,
+                    "TotAmt": 9978.84,
+                    "Discount": 0,
+                    "PreTaxVal": 1,
+                    "AssAmt": 9978.84,
+                    "GstRt": 12.0,
+                    "IgstAmt": 1197.46,
+                    "CgstAmt": 0,
+                    "SgstAmt": 0,
+                    "CesRt": 5,
+                    "CesAmt": 498.94,
+                    "CesNonAdvlAmt": 10,
+                    "StateCesRt": 12,
+                    "StateCesAmt": 1197.46,
+                    "StateCesNonAdvlAmt": 5,
+                    "OthChrg": 10,
+                    "TotItemVal": 12897.7,
+                    "OrdLineRef": "3256",
+                    "OrgCntry": "AG",
+                    "PrdSlNo": "12345",
+                    "BchDtls": {
+                        "Nm": "123456",
+                        "Expdt": "01/08/2020",
+                        "wrDt": "01/09/2020"
+                    },
+                    "AttribDtls": [
+                        {
+                            "Nm": "Rice",
+                            "Val": "10000"
+                        }
+                    ]
+                }
+            ],
+            "ValDtls": {
+                "AssVal": 9978.84,
+                "CgstVal": 0,
+                "SgstVal": 0,
+                "IgstVal": 1197.46,
+                "CesVal": 508.94,
+                "StCesVal": 1202.46,
+                "Discount": 10,
+                "OthChrg": 20,
+                "RndOffAmt": 0.3,
+                "TotInvVal": 12908,
+                "TotInvValFc": 12897.7
+            },
+            "PayDtls": {
+                "Nm": "ABCDE",
+                "Accdet": "5697389713210",
+                "Mode": "Cash",
+                "Fininsbr": "SBIN11000",
+                "Payterm": "100",
+                "Payinstr": "Gift",
+                "Crtrn": "test",
+                "Dirdr": "test",
+                "Crday": 100,
+                "Paidamt": 10000,
+                "Paymtdue": 5000
+            },
+            "RefDtls": {
+                "InvRm": "TEST",
+                "DocPerdDtls": {
+                    "InvStDt": "01/08/2020",
+                    "InvEndDt": "01/09/2020"
+                },
+                "PrecDocDtls": [
+                    {
+                        "InvNo": "DOC/002",
+                        "InvDt": "01/08/2020",
+                        "OthRefNo": "123456"
+                    }
+                ],
+                "ContrDtls": [
+                    {
+                        "RecAdvRefr": "Doc/003",
+                        "RecAdvDt": "01/08/2020",
+                        "Tendrefr": "Abc001",
+                        "Contrrefr": "Co123",
+                        "Extrefr": "Yo456",
+                        "Projrefr": "Doc-456",
+                        "Porefr": "Doc-789",
+                        "PoRefDt": "01/08/2020"
+                    }
+                ]
+            },
+            "AddlDocDtls": [
+                {
+                    "Url": "https://einv-apisandbox.nic.in",
+                    "Docs": "Test Doc",
+                    "Info": "Document Test"
+                }
+            ],
+            "EwbDtls": {
+                "TransId": null,
+                "TransName": null,
+                "Distance": 0,
+                "TransDocNo": null,
+                "TransDocDt": null,
+                "VehNo": "ka123456",
+                "VehType": "R",
+                "TransMode": "1"
+            }
+        }
         // return $data;
 
         // $header =   array(
