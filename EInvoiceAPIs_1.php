@@ -844,6 +844,7 @@ class EInvoiceAPIs extends SiyaConfig{
         return $InvoiceIRNJSONData;
     }
     public function GenerateIRN($input){
+        $authRes = $this->auth($input);
 
         if(empty($input['InvoiceId']) && intval($input['InvoiceId']) <= 0){
             return ['status'=>0,'Message'=>'InvoiceId Require'];
@@ -1069,10 +1070,6 @@ class EInvoiceAPIs extends SiyaConfig{
             CURLOPT_POSTFIELDS => $data,
         ));
         $response = curl_exec($ch);
-        if($eror1["error_cd"] == "GSP752"){
-            $authRes = $this->auth($input);
-            return $this->GenerateIRN($input);
-        }
         print_r($response);
         exit();
 
