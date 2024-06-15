@@ -876,6 +876,7 @@ class EInvoiceAPIs extends SiyaConfig{
             'password' => 'P@ssw0rd',
             'QrCodeSize' => 250,
             'fortally' => 1,
+            'Gstin' => '34AACCC1596Q002',
             // 'ParseIrnResp' => 0,
         ];
         // Append the parameters to the URL
