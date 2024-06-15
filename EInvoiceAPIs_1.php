@@ -879,7 +879,7 @@ class EInvoiceAPIs extends SiyaConfig{
             'fortally' => 1,
             // 'ParseIrnResp' => 0,
         ];
-
+        print_r($params);
         // Append the parameters to the URL
         $url .= '?' . http_build_query($params);
 
