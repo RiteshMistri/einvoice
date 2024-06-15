@@ -907,6 +907,8 @@ class EInvoiceAPIs extends SiyaConfig{
         ));
         $response = curl_exec($ch);
     
+        print_r($response);
+        exit();
 
         $EInvoiceResponseData = [];
         $response = (Array) json_decode($response);
