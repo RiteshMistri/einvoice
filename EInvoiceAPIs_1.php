@@ -856,8 +856,6 @@ class EInvoiceAPIs extends SiyaConfig{
         //     'UserName' => 'AL001'
         // ];
 
-
-       
         $url = "https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice";
         if($this->Mode != 'Dev'){
             $url = 'https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice';
@@ -1071,7 +1069,10 @@ class EInvoiceAPIs extends SiyaConfig{
             CURLOPT_POSTFIELDS => $data,
         ));
         $response = curl_exec($ch);
-    
+        if($eror1["error_cd"] == "GSP752"){
+            $authRes = $this->auth($input);
+            return $this->GenerateIRN($input);
+        }
         print_r($response);
         exit();
 
