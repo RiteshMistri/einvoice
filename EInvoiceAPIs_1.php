@@ -844,7 +844,6 @@ class EInvoiceAPIs extends SiyaConfig{
         return $InvoiceIRNJSONData;
     }
     public function GenerateIRN($input){
-        return $authRes = $this->auth($input);
 
         if(empty($input['InvoiceId']) && intval($input['InvoiceId']) <= 0){
             return ['status'=>0,'Message'=>'InvoiceId Require'];
@@ -853,30 +852,61 @@ class EInvoiceAPIs extends SiyaConfig{
         $ServiceEInvoice = array_key_exists('ServiceEInvoice', $input) && $input['ServiceEInvoice'] == 'ServiceEInvoice' ? 'Y' : 'N';
         $invoiceData =  $this->getInvoiceDetailForIRN($InvoiceId, $ServiceEInvoice);
 
-        $userData = [
-            'UserName' => 'AL001'
+        // $userData = [
+        //     'UserName' => 'AL001'
+        // ];
+
+       
+        $header = [
+            'aspid' => '1763812424',
+            'password' => 'P@ssw0rd',
         ];
-        $url = "https://developers.eraahi.com/eInvoiceGateway/eicore/v1.03/Invoice";
+       
+        $url = "https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice";
         if($this->Mode != 'Dev'){
-            $url = 'https://temp.alankit.com/eInvoiceGateway/eicore/v1.03/Invoice';
+            $url = 'https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice';
             $userData = $this->GetBranchGspCredentials();
-        }  
+        }
+
+        $params = [
+            'aspid' => '1763812424',
+            'password' => 'P@ssw0rd',
+            'Gstin' => $userData['GSTN'],
+            'User_name' => $userData['UserName'],
+            'eInvPwd' => $userData['Password'],
+            'AuthToken' => $userData['AuthToken'],
+            'QrCodeSize' => 250,
+            'fortally' => 1,
+            // 'ParseIrnResp' => 0,
+        ];
+
+        // Append the parameters to the URL
+        $url .= '?' . http_build_query($params);
+
         $data =  $this->data_encrypt($userData['Sek'],$invoiceData);
-        $header =   array(
-            'user_name:'. $userData['UserName'],
-            'Gstin:'. $userData['GSTN'],
-            'AuthToken:'.$userData['AuthToken'],
-            'Ocp-Apim-Subscription-Key:' . $this->sub_key
-        );
-        $data = json_encode(['Data'=>$data]);
+        
+        return $data;
+
+        // $header =   array(
+        //     'user_name:'. $userData['UserName'],
+        //     'Gstin:'. $userData['GSTN'],
+        //     'AuthToken:'.$userData['AuthToken'],
+        //     'Ocp-Apim-Subscription-Key:' . $this->sub_key
+        // );
+        // $data = json_encode(['Data'=>$data]);
+        
+
         $ch = curl_init($url);
         curl_setopt_array($ch, array(
             CURLOPT_POST => true,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_HTTPHEADER =>$header,
             CURLOPT_POSTFIELDS => $data,
         ));
         $response = curl_exec($ch);
+    
+
         $EInvoiceResponseData = [];
         $response = (Array) json_decode($response);
         if(!empty($response['Status']) && $response['Status'] == 1){
