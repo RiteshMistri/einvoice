@@ -1046,7 +1046,7 @@ class EInvoiceAPIs extends SiyaConfig{
 
         // Encode the data to JSON
         $data = json_encode($jsonData);
-        return $data;
+        // return $data;
 
         // $header =   array(
         //     'user_name:'. $userData['UserName'],
